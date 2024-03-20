@@ -1,3 +1,5 @@
+# I got help from ChatGPT
+
 from scipy.integrate import solve_ivp, quad
 import matplotlib.pyplot as plt
 import numpy as np

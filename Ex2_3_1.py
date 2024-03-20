@@ -1,3 +1,5 @@
+# I got help from ChatGPT
+
 import numpy as np
 
 # Constants
