@@ -2,16 +2,50 @@ from scipy.integrate import solve_ivp, quad
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Given initial value problem
 def ivp_function(x, y):
+    """
+    Defines the differential equation for the initial value problem (IVP).
+
+    This function represents the differential equation y' = (y - 0.01*x**2)**2 * np.sin(x**2) + 0.02*x, which is
+    the equation governing the behavior of the system under study.
+
+    Parameters:
+    - x (float): The independent variable of the differential equation, often representing time or spatial coordinate.
+    - y (float): The dependent variable or the current value of the function being solved for in the IVP.
+
+    Returns:
+    - float: The derivative of y at point x, based on the defined differential equation.
+    """
     return (y - 0.01*x**2)**2 * np.sin(x**2) + 0.02*x
 
-# Exact solution S(x)
 def S(x):
+    """
+    Computes the antiderivative of sin(t^2) from 0 to x using numerical integration.
+
+    This function is part of the exact solution to the IVP and involves calculating the integral of a specific
+    mathematical function, sin(t^2), where t is a dummy variable of integration.
+
+    Parameters:
+    - x (float): The upper limit of the integral.
+
+    Returns:
+    - float: The value of the integral from 0 to x.
+    """
     return quad(lambda t: np.sin(t**2), 0, x)[0]
 
-# Exact solution y
 def exact_solution(x):
+    """
+    Calculates the exact solution of the differential equation at a given point x.
+
+    This function provides the analytical solution to the IVP, which is used for comparison with the numerical
+    solution obtained from solve_ivp.
+
+    Parameters:
+    - x (float): The point at which the exact solution is evaluated.
+
+    Returns:
+    - float: The value of the exact solution at x.
+    """
     return 1 / (2.5 - S(x)) + 0.01*x**2
 
 # Define the time points where we want to compute the solution
